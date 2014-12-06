@@ -21,7 +21,7 @@ header-includes:
 [1] "Fixing NC Data"
 [1] "NC Data Ready"
 
-# NC Triangle Area
+# NC Triangle Area - index.md
 
 Defined as the following counties: ````
 
