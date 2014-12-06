@@ -1,0 +1,7 @@
+<style type="text/css">
+	table   { border: 1px solid white; }
+	th      { border: 1px solid white; }
+	tr      { border: 1px solid gray; }
+	tr.odd  { border: 1px solid gray; background-color: #E0E0E0; color: black; }
+	tr.even { border: 1px solid gray; background-color: white;   color: black; }
+</style>

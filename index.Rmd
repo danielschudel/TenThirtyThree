@@ -1,0 +1,37 @@
+---
+title: DLA/DoD 1033 Analysis
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhead[LO,RE]{Aspen Partition and Image Data}
+- \fancyfoot[CE,CO]{\thepage}
+- \fancyfoot[LE,RO]{Extreme Networks Confidential}
+---
+
+```{r echo=FALSE, results="asis"}
+# Bring in all the good stuffs
+source("analyze.R")
+```
+
+```{r echo=FALSE, results="asis", cache=TRUE}
+# Long process here, cache it
+df1033   <- give1033Data()
+triangle <- selectOutTriangle(df1033)
+```
+
+# NC Triangle Area
+
+Defined as the following counties: ```r print(triangleCounties)```
+
+```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
+plotValueByTriangleCounties(triangle)
+```
+
+```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
+plotItemsByTriangleCounties(triangle)
+```
+
+
+
+# Two
+
