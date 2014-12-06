@@ -19,19 +19,25 @@ df1033   <- give1033Data()
 triangle <- selectOutTriangle(df1033)
 ```
 
-# NC Triangle Area
+# NC
 
-Defined as the following counties: ```r print(triangleCounties)```
+## Triangle Counties
+
+Agencies within the following counties are included:
+
+* Chatham
+* Durham
+* Orange
+* Wake
+
+### Total Value of Items Transferred
 
 ```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
 plotValueByTriangleCounties(triangle)
 ```
 
+### Itemization of Items Transferred
+
 ```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
 plotItemsByTriangleCounties(triangle)
 ```
-
-
-
-# Two
-

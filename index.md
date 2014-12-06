@@ -1,5 +1,5 @@
 ---
-title: DLA/DoD 1033 Analysis - index.md
+title: DLA/DoD 1033 Analysis
 header-includes:
 - \usepackage{fancyhdr}
 - \pagestyle{fancy}
@@ -9,27 +9,24 @@ header-includes:
 ---
 
 
-```
-## Loading required package: methods
-```
 
-```
-## Warning in dir.create("Plots"): 'Plots' already exists
-```
 
-[1] "Loading NC Data"
-[1] "Fixing NC Data"
-[1] "NC Data Ready"
 
-# NC Triangle Area - index.md
+# NC
 
-Defined as the following counties: ````
+## Triangle Counties
+
+Agencies within the following counties are included:
+
+* Chatham
+* Durham
+* Orange
+* Wake
+
+### Total Value of Items Transferred
 
 ![](figure/unnamed-chunk-3-1.png) 
 
+### Itemization of Items Transferred
+
 ![](figure/unnamed-chunk-4-1.png) 
-
-
-
-# Two
-

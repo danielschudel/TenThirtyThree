@@ -1,8 +1,6 @@
-library(plyr)
-library(ggplot2)
-library(scales)
-
-dir.create("Plots")
+suppressPackageStartupMessages(library(plyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(scales))
 
 preferredPNGWidth  <- 1600
 preferredPNGHeight <- 1024
@@ -75,15 +73,15 @@ give1033Data <- function() {
     if (FALSE == file.exists("Data/tacticalatLEAMA-WYandTerr.xls")) {
         print("Please decompress the data files into the Data directory")
     } else {
-        print("Loading NC Data")
+#       print("Loading NC Data")
         options(java.parameters = "-Xmx2048m")
         suppressPackageStartupMessages(library(XLConnect))
         wk <- loadWorkbook("Data/tacticalatLEAMA-WYandTerr.xls")
         df1033 <- readWorksheet(wk, sheet="NC")
-        print("Fixing NC Data")
+#       print("Fixing NC Data")
         df1033 <- mergeWithCounties(df1033)
         df1033 <- fixupData(df1033)
-        print("NC Data Ready")
+#       print("NC Data Ready")
     }
     return(df1033)
 }
