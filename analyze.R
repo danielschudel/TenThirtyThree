@@ -60,6 +60,8 @@ fixupData <- function(data) {
     realCost <- mean(data[vehicle & data$acquisitionValue > 1.00 ,"acquisitionValue"])
     data[vehicle & data$acquisitionValue < 1.00 ,"acquisitionValue"] <- realCost
 
+    data$shipYear <- as.numeric(format(data$shipDate, "%Y"))
+
     return(data)
 }
 
@@ -167,6 +169,27 @@ plotValueByItemTopN <- function(ordered) {
                legend.text  = element_text(size=20))
     print(p)
     dev.off()
+}
+
+plotTransferDatesByTriangleCounties <- function(data) {
+    p <- ggplot(data, aes(x=agencyName, y=shipYear)) +
+         geom_boxplot() +
+         coord_flip() +
+         labs(title="Triangle Agencies\nBy Total Transfer Value",
+              x="Agency",
+              y="US Dollars",
+              fill="Total Item Count"
+              ) +
+         theme(axis.title   = element_text(size=40),
+               axis.text    = element_text(size=40),
+               axis.text.y  = element_text(size=30),
+               axis.text.x  = element_text(size=30),
+               plot.title   = element_text(size=30),
+               strip.text   = element_text(size=40),
+               legend.title = element_text(size=20),
+               legend.text  = element_text(size=20))
+    print(p)
+#   dev.off()
 }
 
 plotValueByTriangleCounties <- function(data) {

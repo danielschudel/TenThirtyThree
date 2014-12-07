@@ -4,6 +4,7 @@ HTML=$(PDF:%pdf=%html)
 all: $(PDF) $(HTML)
 
 %.html: %.md
+	@printf "$^ into $@\n"
 	@pandoc \
 		--include-in-header=header.css \
 		--number-sections \
@@ -11,7 +12,8 @@ all: $(PDF) $(HTML)
 		$^ 
 
 %.pdf: %.md
-	pandoc -s \
+	@printf "$^ into $@\n"
+	@pandoc -s \
 	       -V geometry:paperwidth=11in \
 	       -V geometry:paperheight=8.5in \
 	       -V geometry:margin=1in \
@@ -23,6 +25,7 @@ all: $(PDF) $(HTML)
 	       -o $@
 
 %.md: %.Rmd
+	@printf "$^ into $@\n"
 	@Rscript toMarkdown.R $^
 
 clean:

@@ -19,6 +19,22 @@ df1033   <- give1033Data()
 triangle <- selectOutTriangle(df1033)
 ```
 
+# Data Sources
+
+The [DLA’s](http://www.dispositionservices.dla.mil/) Law Enforcement Support Office (LESO) transfers excess Department of Defense
+property to federal, state, and local law enforcement agencies within the United States and its Territories
+
+Details of transfers since 1950 have been documented on this webpage.
+
+* [http://www.dispositionservices.dla.mil/EFOIA-Privacy/Pages/ereadingroom.aspx#1033](http://www.dispositionservices.dla.mil/EFOIA-Privacy/Pages/ereadingroom.aspx#1033)
+
+The following files available above are used in this analysis:
+
+|File Name                |Description                   |URL                                                                    |
+|-------------------------|------------------------------|-----------------------------------------------------------------------|
+|tacticalatLEAAL-LA.xls|DLA/DoD 1033 Alaska - Louisiana|http://www.dispositionservices.dla.mil/EFOIA-Privacy/Documents/tacticalatLEAAL-LA.xls|
+|tacticalatLEAMA-WYandTerr.xls|DLA/DoD 1033 Massachusetts - Wyoming and territories|http://www.dispositionservices.dla.mil/EFOIA-Privacy/Documents/tacticalatLEAMA-WYandTerr.xls|
+
 # NC
 
 ## Triangle Counties
@@ -29,6 +45,15 @@ Agencies within the following counties are included:
 * Durham
 * Orange
 * Wake
+
+### Data Summaries
+
+```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
+library(xtable)
+t <- ddply(triangle, .(agencyName, shipYear, itemName), summarize, total=sum(one))
+t <- xtable(t)
+print(t, type="html")
+```
 
 ### Total Value of Items Transferred
 
@@ -41,3 +66,18 @@ plotValueByTriangleCounties(triangle)
 ```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
 plotItemsByTriangleCounties(triangle)
 ```
+
+# Copying
+
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+
+Follow these links for licensing and re-use details:
+
+* [http://creativecommons.org/licenses/by-sa/4.0/](http://creativecommons.org/licenses/by-sa/4.0/)
+* [http://creativecommons.org/licenses/by-sa/4.0/legalcode](http://creativecommons.org/licenses/by-sa/4.0/legalcode)
+
+# Adapting
+
+This work is available on [GitHub](http://github.com) at the following URL:
+
+* [https://github.com/danielschudel/TenThirtyThree/](https://github.com/danielschudel/TenThirtyThree/)
