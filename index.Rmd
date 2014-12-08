@@ -35,6 +35,10 @@ The following files available above are used in this analysis:
 |tacticalatLEAAL-LA.xls|DLA/DoD 1033 Alaska - Louisiana|http://www.dispositionservices.dla.mil/EFOIA-Privacy/Documents/tacticalatLEAAL-LA.xls|
 |tacticalatLEAMA-WYandTerr.xls|DLA/DoD 1033 Massachusetts - Wyoming and territories|http://www.dispositionservices.dla.mil/EFOIA-Privacy/Documents/tacticalatLEAMA-WYandTerr.xls|
 
+# Data Transformations
+
+All data transformations can be inspected on this project's [GitHub](http://www.github.com) project page - [https://github.com/danielschudel/TenThirtyThree/](https://github.com/danielschudel/TenThirtyThree/). The two files ```analyze.R``` and ```encodeCounties.R``` are of particular interest.
+
 # NC
 
 ## Triangle Counties
@@ -50,10 +54,20 @@ Agencies within the following counties are included:
 
 ```{r echo=FALSE, results="asis", fig.width=24, fig.height=12, fig.cap=""}
 library(xtable)
-t <- ddply(triangle, .(agencyName, shipYear, itemName), summarize, total=sum(one))
+t <- ddply(triangle, .(agencyName, shipYear, itemName), summarize, totalItems=sum(one), totalValue=sum(acquisitionValue))
+t$totalValue <- dollar(as.numeric(as.character(t$totalValue)))
 t <- xtable(t)
-print(t, type="html")
+digits(t) <- 0
+align(t) <- "|r|r|l|l|l|r|"
+print(t, type="html", include.rownames=FALSE, floating=FALSE)
 ```
+
+#### Specific Notes
+
+* 2003 transfer of combat/assault/tactical vehicle to the Orange County Sheriff is coded as having an acquisition value of $0.01 (US Dollars).
+    * This is assumed to be a clerical mistake. Five other counties received similar items with a significantly higher recorded value. The mean of those values
+      is substituted for the recorded $0.01.
+    * It is possible that the transferred item did have a near zero value.
 
 ### Total Value of Items Transferred
 
